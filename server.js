@@ -14,6 +14,10 @@ app.use(webpackHotMiddleware(compiler));
 
 app.use(express.static('./dist'));
 
+app.get('/api/users', function (req, res) {
+	res.json({users: [{"id": 1, "name": "Brad"}, {"id": 2, "name": "Kevin"}]});
+});
+
 app.use('/', function (req, res) {
     res.sendFile(path.resolve('client/index.html'));
 });
