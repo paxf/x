@@ -3,24 +3,28 @@ import React from 'react';
 class TodoItem extends React.Component{
   constructor(props) {
     super(props)
+    this.handleComplete = this.handleComplete.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
-  handleCompleted() {
-
+  handleComplete() {
+    this.props.completeTodo(this.props.todo.id)
   }
 
   handleDelete() {
-
+    this.props.deleteTodo(this.props.todo.id)
   }
 
   render() {
     return (
       <li>
-        <div>
-          {this.props.todo.text}
-        </div>
-        <button onClick={this.handleCompleted}>toggle completed</button>
-        <button onClick={this.handleDelete}>delete</button>
+        <p
+        style={{textDecoration: this.props.todo.completed?'line-through':''}}
+        onClick={this.handleComplete}
+        >
+          {this.props.todo.text}{' '}
+          <button onClick={this.handleDelete}>delete</button>
+        </p>
       </li>
     )
   }
