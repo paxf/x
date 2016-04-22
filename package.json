@@ -4,7 +4,7 @@
   "description": "A simple React, Redux and Webpack starter",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon server.js --ignore components"
+    "serve": "nodemon server/server.js --ignore components"
   },
   "repository": {
     "type": "git",
@@ -28,12 +28,8 @@
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",
-<<<<<<< HEAD
     "redux": "^3.5.1",
-    "redux-logger": "^2.6.1"
-=======
-    "react-router": "^2.3.0",
-    "redux": "^3.5.1"
->>>>>>> 160391963fc4927e6fc33f937cb09d05b638d730
+    "redux-logger": "^2.6.1",
+    "react-router": "^2.3.0"
   }
 }

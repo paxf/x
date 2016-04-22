@@ -6,10 +6,16 @@ class TodoInput extends React.Component {
 		this.state = {
 			text: ''
 		}
+		this.handleSubmit = this.handleSubmit.bind(this)
+		this.handleChange = this.handleChange.bind(this)
 	}
 
 	handleSubmit(e) {
-
+		e.preventDefault()
+		this.props.addTodo(this.state.text)
+		this.setState({
+			text: ''
+		})
 	}
 
 	handleChange(e) {
@@ -17,7 +23,7 @@ class TodoInput extends React.Component {
 			text: e.target.value
 		})
 	}
-	
+
 	render() {
 		return (
 			<div>
