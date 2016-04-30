@@ -17,7 +17,6 @@ var reducer = function (state, action) {
       });
 
     case 'COMPLETE_TODO':
-      console.log(action.id);
       return Object.assign({}, state, {
         todos: state.todos.map(function (todo) {
           return todo.id === action.id ? Object.assign({}, todo, {completed: !todo.completed}) : todo

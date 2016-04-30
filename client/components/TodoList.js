@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import TodoItem from './TodoItem'
 
 class TodoList extends React.Component{
@@ -17,6 +17,16 @@ class TodoList extends React.Component{
       </ul>
 		)
 	}
+}
+
+TodoList.propTypes = {
+	todos: PropTypes.arrayOf(PropTypes.shape({
+		id: PropTypes.number.isRequired
+	}).isRequired).isRequired,
+	actions: PropTypes.shape({
+		deleteTodo: PropTypes.func.isRequired,
+		completeTodo: PropTypes.func.isRequired
+	}).isRequired
 }
 
 module.exports = TodoList

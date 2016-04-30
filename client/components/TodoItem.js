@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 class TodoItem extends React.Component{
   constructor(props) {
@@ -27,5 +27,9 @@ class TodoItem extends React.Component{
   }
 }
 
-console.log(TodoItem);
+TodoItem.propTypes = {
+	completeTodo: PropTypes.func.isRequired,
+	deleteTodo: PropTypes.func.isRequired
+}
+
 module.exports = TodoItem

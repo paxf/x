@@ -1,33 +1,62 @@
-import React from 'react'
+// import React, { PropTypes } from 'react'
+//
+// class TodoInput extends React.Component {
+// 	constructor(props) {
+// 		super(props)
+// 	}
+//
+// 	render() {
+// 		return (
+// 			<div>
+//         <form onSubmit={(e) => {
+// 					e.preventDefault()
+// 					if(this.refs.input.value.trim()){
+// 						this.props.addTodo(this.refs.input.value)
+// 						this.refs.input.value = ''
+// 					}
+// 				}}>
+//           <input type="text" placeholder="Add new todo" ref="input"/>
+//           <input type="submit" value="Add todo"/>
+//         </form>
+//       </div>
+// 		)
+// 	}
+// }
+//
+// TodoInput.propTypes = {
+// 	addTodo: PropTypes.func.isRequired
+// }
+//
+// module.exports = TodoInput
 
-class TodoInput extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = { text: '' }
-		this.handleSubmit = this.handleSubmit.bind(this)
-		this.handleChange = this.handleChange.bind(this)
-	}
 
-	handleSubmit(e) {
-		e.preventDefault()
-		this.props.addTodo(this.state.text)
-		this.setState({ text: '' })
-	}
+import React, { PropTypes } from 'react'
 
-	handleChange(e) {
-		this.setState({ text: e.target.value })
-	}
+const TodoInput = ({ addTodo }) => {
+  let input
 
-	render() {
-		return (
-			<div>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Add new todo" value={this.state.text} onChange={this.handleChange}/>
-          <input type="submit" value="Add todo"/>
-        </form>
-      </div>
-		)
-	}
+  return (
+    <div>
+      <form onSubmit={e => {
+        e.preventDefault()
+        if (input.value.trim()) {
+	        addTodo(input.value)
+	        input.value = ''
+				}
+      }}>
+        <input ref={node => {
+          input = node
+        }} />
+        <button type="submit">
+          Add Todo
+        </button>
+      </form>
+    </div>
+  )
 }
 
-module.exports = TodoInput
+TodoInput.propTypes = {
+	addTodo: PropTypes.func.isRequired
+}
+
+export default TodoInput

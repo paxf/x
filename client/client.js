@@ -15,6 +15,9 @@ var initialState = {
   ]
 }
 
+
+// const store = createStoreDevTools(initialState);
+
 var store = configureStore(initialState)
 
 render(
