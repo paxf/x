@@ -18,17 +18,14 @@ class TodoItem extends React.Component{
   render() {
     return (
       <li>
-        <p
-        style={{textDecoration: this.props.todo.completed?'line-through':''}}
-        onClick={this.handleComplete}
-        >
+        <p style={{textDecoration: this.props.todo.completed?'line-through':''}} onClick={this.handleComplete} >
           {this.props.todo.text}{' '}
           <button onClick={this.handleDelete}>delete</button>
         </p>
       </li>
     )
   }
-
 }
 
+console.log(TodoItem);
 module.exports = TodoItem
