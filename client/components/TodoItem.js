@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import shallowCompare from 'react/lib/shallowCompare'
 
 class TodoItem extends React.Component{
   constructor(props) {
@@ -15,11 +16,16 @@ class TodoItem extends React.Component{
     this.props.deleteTodo(this.props.todo.id)
   }
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return shallowCompare(this, nextProps, nextState)
+	}
+
   render() {
+		const {todo} = this.props
     return (
       <li>
-        <p style={{textDecoration: this.props.todo.completed?'line-through':''}} onClick={this.handleComplete} >
-          {this.props.todo.text}{' '}
+        <p style={{textDecoration: todo.completed?'line-through':''}} onClick={this.handleComplete} >
+          {todo.text}{' '}
           <button onClick={this.handleDelete}>delete</button>
         </p>
       </li>

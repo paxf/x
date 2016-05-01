@@ -4,16 +4,19 @@ import { connect } from 'react-redux'
 import * as actions from '../redux/actions'
 import TodoInput from '../components/TodoInput'
 import TodoList from '../components/TodoList'
+import shallowCompare from 'react/lib/shallowCompare'
 
 class App extends React.Component{
   constructor(props) {
     super(props)
-  }
+	}
+
   render() {
+		const {todos, actions} = this.props
     return (
       <div>
-        <TodoInput addTodo={this.props.actions.addTodo}/>
-        <TodoList todos={this.props.todos} actions={this.props.actions}/>
+        <TodoInput addTodo={actions.addTodo}/>
+        <TodoList todos={todos} actions={actions}/>
       </div>
     )
   }
